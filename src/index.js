@@ -8,13 +8,25 @@ export function waitUntil(arg1, options) {
   }
 
   _.defaults(options, {
-    retry: true,
-    verify: true
+    // retry: true,
+    // verify: true
   })
 
-  const getValue = arg1
+  console.log('PP')
+  cy.log('PP')
+  const getValue = () => {
+    cy.log('calling')
+    console.log('calling')
+    return arg1()
+      .then(bool => {
+        console.log('called')
+        cy.log('val', bool)
+        cy.log(bool)
+      })
+  }
   const resolveValue = () => {
     return Cypress.Promise.try(getValue).then(value => {
+      cy.log('OO', value)
       return cy.verifyUpcomingAssertions(value, options, {
         onRetry: resolveValue,
       })
@@ -24,4 +36,4 @@ export function waitUntil(arg1, options) {
   return resolveValue()
 }
 
-Cypress.Commands.add("waitUntil", route_login_ok);
+Cypress.Commands.add("waitUntil", waitUntil);

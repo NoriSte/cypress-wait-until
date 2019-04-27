@@ -6,7 +6,17 @@ context('Actions', () => {
   })
 
   it('Should work with an immediately-satisfied condition', () => {
+    cy.get('#aa').click()
 
+    cy.getCookie('immediate-cookie').then(cookieValue => {
+      console.log('cookieValue', cookieValue)
+      return cookieValue === 'Set'
+    })
+    console.log('AANN')
+
+    cy.waitUntil(() => cy.getCookie('immediate-cookie').then(cookieValue => cookieValue.value === 'Set'));
+
+    cy.getCookie('immediate-cookie').then(cookieValue => expect(cookieValue).to.be.equal('Set'));
   })
 
   it('Should work with a condition satisfied after a random delay', () => {
