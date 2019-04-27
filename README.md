@@ -56,7 +56,7 @@ Pass in an options object to change the default behavior of `cy.waitUntil()`.
 
 Option | Default | Description
 --- | --- | ---
-`timeout` | `5000` | Time to wait for the `checkFunction` to return a thruthy value before throwing an error.
+`timeout` | `5000` | Time to wait for the `checkFunction` to return a truthy value before throwing an error.
 `interval` | `200` | Time to wait between the `checkFunction` invocations.
 
 <br />
@@ -64,8 +64,8 @@ Option | Default | Description
 
 ## Why did we wrote it?
 
-Lot of StackOverflow users had some difficulties in implementing a recursive promise with Cypress
-just to repeatidly check for something to happen (see two of the various questions about the topic: [How can i wait for each element in a list to update to a certain
+A lot of StackOverflow users had some difficulties in implementing a recursive promise with Cypress
+just to repeatedly check for something to happen (see two of the various questions about the topic: [How can i wait for each element in a list to update to a certain
 text?](https://stackoverflow.com/questions/54883861/how-can-i-wait-for-each-element-in-a-list-to-update-to-a-certain-text-using-cypr/55363629#55363629)
 And [How do I wait until a cookie is
 set?](https://stackoverflow.com/questions/54732818/how-do-i-wait-until-a-cookie-is-set/54743229#54743229)).
