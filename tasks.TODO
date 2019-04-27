@@ -1,5 +1,5 @@
 ☐ scrivere il plugin
-    ☐ controllare opzioni wait cypress
+    ✔ controllare opzioni wait cypress @done (4/27/2019, 12:42:41 PM)
     ☐ dare una forma alla API
     ☐ documentazione
     ☐ esempi
@@ -14,6 +14,7 @@
     ☐ casi di errore (come si testano?)
     ☐ scrivere mini-frontend che permetta di testare il plugin
 ☐ all contributors
+☐ ridare un occhio al codice scritto
 ☐ CI
 ☐ npm
     ☐ rilasciare su NPM e controllare tutto il package.json
