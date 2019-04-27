@@ -1,10 +1,6 @@
 'use strict'
 
-module.exports = function waitUntil(checkFunction, options) {
-  if (!(checkFunction instanceof Function)) {
-    return cy.wait(checkFunction, options)
-  }
-
+export function waitUntil(checkFunction, options) {
   options = options || {}
 
   const TIMEOUT_INTERVAL = options.interval || 200
