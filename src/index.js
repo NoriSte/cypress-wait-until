@@ -1,6 +1,6 @@
 'use strict'
 
-export function waitUntil(checkFunction, options) {
+function waitUntil(checkFunction, options) {
   options = options || {}
 
   const TIMEOUT_INTERVAL = options.interval || 200
