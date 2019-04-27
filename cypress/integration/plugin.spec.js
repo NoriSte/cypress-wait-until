@@ -92,4 +92,11 @@ context('Actions', () => {
 
     cy.waitUntil(checkFunction)
   })
+
+  it('`checkFunction` should be a function', () => {
+    const ERROR_MESSAGE = '`checkFunction` parameter should be a function. Found: true'
+
+    cy.once('fail', err => expect(err.message).to.be.equal(ERROR_MESSAGE))
+    cy.waitUntil(true)
+  })
 })

@@ -1,6 +1,9 @@
 'use strict'
 
 function waitUntil(checkFunction, options) {
+  if (!(checkFunction instanceof Function)) {
+    throw new Error('`checkFunction` parameter should be a function. Found: ' + checkFunction)
+  }
   options = options || {}
 
   const TIMEOUT_INTERVAL = options.interval || 200
