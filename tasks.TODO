@@ -5,11 +5,11 @@
     ☐ esempi
     ☐ motivazioni
     ☐ licenza
-    ☐
 ☐ test
     ☐ test su flusso asincrono (vedi controllo cookie)
     ☐ qualcosa di sincrono (4+4)
     ☐ casi di errore (come si testano?)
+    ☐ scrivere mini-frontend che permetta di testare il plugin
 ☐ all contributors
 ☐ CI
 ☐ npm

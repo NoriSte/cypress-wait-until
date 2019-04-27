@@ -13,7 +13,8 @@
     }
   },
   "scripts": {
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "cy:open": "cypress open"
   },
   "repository": {
     "type": "git",
