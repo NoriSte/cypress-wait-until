@@ -1,6 +1,6 @@
 'use strict'
 
-export function waitUntil(checkFunction, options) {
+module.exports = function waitUntil(checkFunction, options) {
   if (!(checkFunction instanceof Function)) {
     return cy.wait(checkFunction, options)
   }
