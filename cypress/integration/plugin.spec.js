@@ -31,6 +31,25 @@ context('Actions', () => {
     cy.getCookie(COOKIE_NAME).then(cookieValue => expect(cookieValue.value).to.be.equal(EXPECTED_COOKIE_VALUE));
   })
 
+  it('Should apply options correctly', () => {
+    const COOKIE_NAME = 'after-a-while-cookie'
+    const EXPECTED_COOKIE_VALUE = 'Set'
+
+    cy.once('fail', err => {
+      expect(err.message).to.be.equal('Timed out retrying')
+    })
+
+    cy.get('#' + COOKIE_NAME).click()
+
+    const checkFunction = () => cy.getCookie(COOKIE_NAME)
+      .then(cookieValue => cookieValue && cookieValue.value === EXPECTED_COOKIE_VALUE)
+
+    cy.waitUntil(checkFunction, {
+      interval: 100,
+      timeout: 900
+    })
+  })
+
   it('Should check value equality check', () => {
     const COOKIE_NAME = 'change-after-a-while-cookie'
     const EXPECTED_COOKIE_VALUE = '7'
