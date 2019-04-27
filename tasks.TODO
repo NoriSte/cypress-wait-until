@@ -1,22 +1,5 @@
-☐ scrivere il plugin
-    ✔ controllare opzioni wait cypress @done (4/27/2019, 12:42:41 PM)
-    ☐ dare una forma alla API
-    ☐ documentazione
-    ☐ esempi
-    ☐ motivazioni
-    ☐ licenza
-    ☐ gestire correttamente gli eventi di cypress
-        ☐ command:retry
-        ☐ uncaught:exception compliance (?)
 ☐ test
-    ☐ test su flusso asincrono (creazione cookie dopo un timeout)
     ☐ qualcosa di sincrono (4+4)
-    ☐ casi di errore (come si testano?)
-    ☐ scrivere mini-frontend che permetta di testare il plugin
-    ☐ controllare che le opzioni funzionino
-☐ all contributors
-☐ ridare un occhio al codice scritto
-☐ CI
 ☐ npm
     ☐ rilasciare su NPM e controllare tutto il package.json
 ☐ aggiungere il plugin alla lista ufficiale dei plugin
