@@ -32,7 +32,7 @@ Then, in your test, you can write
 
 ```javascript
 // wait until a cookie is set
-cy.waitUntil(() => cy.getCookie('token').then(cookie => boolean(cookie.value)));
+cy.waitUntil(() => cy.getCookie('token').then(cookie => Boolean(cookie && cookie.value)));
 
 // wait until a global variable has an expected value
 cy.waitUntil(() => cy.window().then(win => win.foo === "bar"));
