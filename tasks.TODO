@@ -13,16 +13,15 @@
     ☐ qualcosa di sincrono (4+4)
     ☐ casi di errore (come si testano?)
     ☐ scrivere mini-frontend che permetta di testare il plugin
+    ☐ controllare che le opzioni funzionino
 ☐ all contributors
 ☐ ridare un occhio al codice scritto
 ☐ CI
 ☐ npm
     ☐ rilasciare su NPM e controllare tutto il package.json
-☐ readme
-    ☐ aggiungere open source saturday
-    ☐ aggiungere tommaso tra i contributor
-    ☐ aggiungere i vari badge
 ☐ aggiungere il plugin alla lista ufficiale dei plugin
+☐ cancellare questo todo 😁
+☐ controllare che gli esempi nel readme funzionino
 
 
 
