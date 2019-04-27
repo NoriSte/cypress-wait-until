@@ -1,16 +1,15 @@
 'use strict'
 
-const _ = require("lodash")
-
 export function waitUntil(arg1, options) {
   if (!(arg1 instanceof Function)) {
     return cy.wait(arg1, options)
   }
 
-  _.defaults(options, {
+  options = {
+    ...options,
     // retry: true,
     // verify: true
-  })
+  }
 
   console.log('PP')
   cy.log('PP')
