@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "cypress": "^3.2.0"
+    "cypress": "^3.2.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "start-server-and-test": "^1.9.0"
   },
   "config": {
     "commitizen": {
@@ -14,7 +16,11 @@
   },
   "scripts": {
     "commit": "npx git-cz",
-    "cy:open": "cypress open"
+    "serve": "npx serve public",
+    "cy:open": "cypress open",
+    "test": "npm run cy:start-server-and-test",
+    "cy:start-server-and-test": "npx start-server-and-test serve :5000 cy:run",
+    "cy:run": "cypress run"
   },
   "repository": {
     "type": "git",

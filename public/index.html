@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Cypress plugin</title>
+    <script>
+        var cookieNames = {
+            immediate: "immediate-cookie",
+            delay: "after-a-while-cookie"
+        };
+        function setCookieImmediately() {
+            document.cookie = cookieNames.immediate + "=Set";
+        }
+        function setCookieAfterAWhile() {
+            setTimeout(function(){
+                document.cookie = cookieNames.delay + "=Set";
+            }, 1000+Math.random()*2000);
+        }
+        function clearCookies() {
+            var unsetCookie = "= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+            document.cookie = cookieNames.immediate + unsetCookie;
+            document.cookie = cookieNames.delay + unsetCookie;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="javascript:setCookieImmediately()">Set a cookie immediately</button>
+    <button onclick="javascript:setCookieAfterAWhile()">Set a cookie after a while</button>
+    <button onclick="javascript:clearCookies()">Clear cookies</button>
+</body>
+</html>
