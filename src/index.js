@@ -1,35 +1,18 @@
 'use strict'
 
-export function waitUntil(arg1, options) {
-  if (!(arg1 instanceof Function)) {
-    return cy.wait(arg1, options)
+export function waitUntil(checkFunction, options) {
+  if (!(checkFunction instanceof Function)) {
+    return cy.wait(checkFunction, options)
   }
 
-  options = {
-    ...options,
-    // retry: true,
-    // verify: true
-  }
-
-  console.log('PP')
-  cy.log('PP')
-  const getValue = () => {
-    cy.log('calling')
-    console.log('calling')
-    return arg1()
-      .then(bool => {
-        console.log('called')
-        cy.log('val', bool)
-        cy.log(bool)
-      })
-  }
   const resolveValue = () => {
-    return Cypress.Promise.try(getValue).then(value => {
-      cy.log('OO', value)
-      return cy.verifyUpcomingAssertions(value, options, {
-        onRetry: resolveValue,
+    return checkFunction()
+      .then(b => {
+          if (!b) {
+            cy.wait(200)
+            return resolveValue()
+          }
       })
-    })
   }
 
   return resolveValue()
