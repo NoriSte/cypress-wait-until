@@ -5,15 +5,22 @@
         const cookieNames = {
             immediate: "immediate-cookie",
             delay: "after-a-while-cookie",
+            change: "change-after-a-while-cookie",
             beforeOnLoad: "before-on-load-cookie"
         };
-        const setCookie = (cookieName = cookieNames.immediate) => {
-            document.cookie = `${cookieName}=Set`;
+        const setCookie = (cookieName = cookieNames.immediate, value='Set') => {
+            document.cookie = `${cookieName}=${value}`;
         }
         const setCookieAfterAWhile = () => {
             setTimeout(function(){
                 setCookie(cookieNames.delay);
             }, 1000+Math.random()*2000);
+        }
+        const setCookieChangeAfterAWhile = () => {
+          setCookie(cookieNames.change, '5')
+          setTimeout(function(){
+              setCookie(cookieNames.change, '7');
+          }, 3000);
         }
         const clearCookies = () => {
             Object.values(cookieNames).forEach(item => document.cookie = `${item} = ; expires = Thu, 01 Jan 1970 00:00:00 GMT` );
@@ -25,6 +32,7 @@
 <body>
     <button id="immediate-cookie" onclick="javascript:setCookie()">Set a cookie immediately</button>
     <button id="after-a-while-cookie" onclick="javascript:setCookieAfterAWhile()">Set a cookie after a while</button>
+    <button id="change-after-a-while-cookie" onclick="javascript:setCookieChangeAfterAWhile()">Set a cookie after a while</button>
     <button onclick="javascript:clearCookies()">Clear cookies</button>
 </body>
 </html>

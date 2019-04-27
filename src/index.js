@@ -5,13 +5,22 @@ export function waitUntil(checkFunction, options) {
     return cy.wait(checkFunction, options)
   }
 
+  options = options || {}
+
+  const TIMEOUT_INTERVAL = options.TIMEOUT_INTERVAL || 200
+  const TIMEOUT = options.timeout || 5000
+  let retries = Math.floor(TIMEOUT / TIMEOUT_INTERVAL)
+
   const resolveValue = () => {
     return checkFunction()
       .then(b => {
-          if (!b) {
-            cy.wait(200)
-            return resolveValue()
+          if (b) return
+          if (retries < 1) {
+            throw new Error('Timed out retrying')
           }
+          cy.wait(TIMEOUT_INTERVAL)
+          retries--
+          return resolveValue()
       })
   }
 
