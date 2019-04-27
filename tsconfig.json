@@ -7,6 +7,7 @@
     ]
   },
   "include": [
-    "*.ts"
+    "index.d.ts",
+    "cypress/types/*.ts"
   ]
 }
