@@ -1,0 +1,29 @@
+☐ scrivere il plugin
+    ☐ controllare opzioni wait cypress
+    ☐ dare una forma alla API
+    ☐ documentazione
+    ☐ esempi
+    ☐ motivazioni
+    ☐ licenza
+    ☐
+☐ test
+    ☐ test su flusso asincrono (vedi controllo cookie)
+    ☐ qualcosa di sincrono (4+4)
+    ☐ casi di errore (come si testano?)
+☐ all contributors
+☐ CI
+☐ npm
+    ☐ rilasciare su NPM e controllare tutto il package.json
+☐ readme
+    ☐ aggiungere open source saturday
+    ☐ aggiungere tommaso tra i contributor
+    ☐ aggiungere i vari badge
+☐ aggiungere il plugin alla lista ufficiale dei plugin
+
+
+
+addons
+☐ typescript
+☐ fallback per utilizzo waitUntil anche al posto di wait
+☐ rispondere ai tizi su stackoverflow
+☐ aggiungere il plugin alle slide di martedì per ringraziare tutti
