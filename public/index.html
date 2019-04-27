@@ -2,27 +2,28 @@
 <head>
     <title>Cypress plugin</title>
     <script>
-        var cookieNames = {
+        const cookieNames = {
             immediate: "immediate-cookie",
-            delay: "after-a-while-cookie"
+            delay: "after-a-while-cookie",
+            beforeOnLoad: "before-on-load-cookie"
         };
-        function setCookieImmediately() {
-            document.cookie = cookieNames.immediate + "=Set";
+        const setCookie = (cookieName = cookieNames.immediate) => {
+            document.cookie = `${cookieName}=Set`;
         }
-        function setCookieAfterAWhile() {
+        const setCookieAfterAWhile = () => {
             setTimeout(function(){
-                document.cookie = cookieNames.delay + "=Set";
+                setCookie(cookieNames.delay);
             }, 1000+Math.random()*2000);
         }
-        function clearCookies() {
-            var unsetCookie = "= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-            document.cookie = cookieNames.immediate + unsetCookie;
-            document.cookie = cookieNames.delay + unsetCookie;
+        const clearCookies = () => {
+            Object.values(cookieNames).forEach(item => document.cookie = `${item} = ; expires = Thu, 01 Jan 1970 00:00:00 GMT` );
         }
+
+        setCookie(cookieNames.beforeOnLoad);
     </script>
 </head>
 <body>
-    <button onclick="javascript:setCookieImmediately()">Set a cookie immediately</button>
+    <button onclick="javascript:setCookie()">Set a cookie immediately</button>
     <button onclick="javascript:setCookieAfterAWhile()">Set a cookie after a while</button>
     <button onclick="javascript:clearCookies()">Clear cookies</button>
 </body>
