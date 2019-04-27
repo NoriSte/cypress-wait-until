@@ -1,0 +1,35 @@
+{
+  "name": "cypress-wait-until",
+  "version": "1.0.0",
+  "description": "A waiting plugin for Cypress",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^3.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "commit": "npx git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoriSte/cypress-wait-until.git"
+  },
+  "keywords": [
+    "cypress",
+    "promise",
+    "recursive-promise",
+    "wait",
+    "open-source-saturday"
+  ],
+  "author": "NoriSte <nori.ste.magni@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NoriSte/cypress-wait-until/issues"
+  },
+  "homepage": "https://github.com/NoriSte/cypress-wait-until#readme"
+}
