@@ -37,6 +37,9 @@ cy.waitUntil(() => cy.getCookie('token').then(cookie => Boolean(cookie && cookie
 // wait until a global variable has an expected value
 cy.waitUntil(() => cy.window().then(win => win.foo === "bar"));
 
+// sync function works too!
+cy.waitUntil(() => true);
+
 // with all the available options
 cy.waitUntil(() => cy.window().then(win => win.foo === "bar"), {
   timeout: 2000, // waits up to 2000 ms, default to 5000

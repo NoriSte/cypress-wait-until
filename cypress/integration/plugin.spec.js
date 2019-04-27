@@ -76,4 +76,20 @@ context('Actions', () => {
 
     cy.waitUntil(checkFunction)
   })
+
+  it('Should work sync', () => {
+    const checkFunction = () => true
+
+    cy.waitUntil(checkFunction)
+  })
+
+  it('Should work sync with retries', () => {
+    let n = 4;
+    const checkFunction = () => {
+      n--;
+      return n < 0;
+    }
+
+    cy.waitUntil(checkFunction)
+  })
 })
