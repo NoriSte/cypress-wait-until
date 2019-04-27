@@ -7,7 +7,7 @@ export function waitUntil(checkFunction, options) {
 
   options = options || {}
 
-  const TIMEOUT_INTERVAL = options.TIMEOUT_INTERVAL || 200
+  const TIMEOUT_INTERVAL = options.timeoutInterval || 200
   const TIMEOUT = options.timeout || 5000
   let retries = Math.floor(TIMEOUT / TIMEOUT_INTERVAL)
 
