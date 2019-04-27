@@ -5,8 +5,11 @@
     ☐ esempi
     ☐ motivazioni
     ☐ licenza
+    ☐ gestire correttamente gli eventi di cypress
+        ☐ command:retry
+        ☐ uncaught:exception compliance (?)
 ☐ test
-    ☐ test su flusso asincrono (vedi controllo cookie)
+    ☐ test su flusso asincrono (creazione cookie dopo un timeout)
     ☐ qualcosa di sincrono (4+4)
     ☐ casi di errore (come si testano?)
     ☐ scrivere mini-frontend che permetta di testare il plugin
