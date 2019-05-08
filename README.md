@@ -48,6 +48,18 @@ cy.waitUntil(() => cy.window().then(win => win.foo === "bar"), {
 });
 ```
 
+If you return a truthy value, it becomes the subject for the next command. So you can assert about
+it too
+
+```javascript
+// wait until the Recaptcha token will be added to the dedicated hidden input field...
+cy.waitUntil(() => cy.get("input[type=hidden]#recaptchatoken").then($el => $el.val()))
+  // ... then, check that it's valid string asserting about it
+  .then(token => expect(token).to.be.a("string").to.have.length.within(1, 1000));
+```
+
+
+
 ## Arguments
 
 - checkFunction
