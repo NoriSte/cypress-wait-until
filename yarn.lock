@@ -2566,10 +2566,10 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
-start-server-and-test@1.9.2:
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.9.2.tgz#64aecc36cd82c210053c202448184969e4e8a38d"
-  integrity sha512-CFtMw1FlJX2tPA6YSocWZtIlkTdJjK56SVaa4q079TpTcCcHcwAwlFo3Cn3ZgAAogEZjHoj6LrVb6ANdV9sGuA==
+start-server-and-test@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.10.0.tgz#a7cd88932a52b42bc9de184430a498338e426c0b"
+  integrity sha512-wp6x++18wNUIkI0qT+EkgwVQFwoXh003u/PPUJVEEyh9lSNDONLD9CK2qleghS/kl5LxipbrIUw+FJVEFRVkGw==
   dependencies:
     bluebird "3.5.5"
     check-more-types "2.24.0"
