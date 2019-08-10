@@ -16,7 +16,7 @@ cache:
 install:
   - npm install
 before_script:
-	- "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash"
+	- curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash
 script:
   - npm test
   - fossa init
