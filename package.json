@@ -1,6 +1,6 @@
 {
   "name": "cypress-wait-until",
-  "version": "1.2.4",
+  "version": "1.2.3",
   "description": "A waiting plugin for Cypress",
   "main": "src/index.js",
   "dependencies": {},
@@ -24,7 +24,7 @@
     "cy:open": "cypress open",
     "test": "npm run cy:start-server-and-test",
     "cy:start-server-and-test": "start-server-and-test serve :5000 cy:run",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --record --key 0d5ef033-250c-4367-a396-40c9b0668b18",
     "typescript": "tsc --project ./tsconfig.json"
   },
   "repository": {
