@@ -49,6 +49,7 @@ cy.waitUntil(() => true);
 
 // with all the available options
 cy.waitUntil(() => cy.window().then(win => win.foo === "bar"), {
+  errorMsg: 'This is a custom error message', // overrides the default error message 
   timeout: 2000, // waits up to 2000 ms, default to 5000
   interval: 500 // performs the check every 500 ms, default to 200
 });
@@ -78,6 +79,7 @@ Pass in an options object to change the default behavior of `cy.waitUntil()`.
 
 Option | Default | Description
 --- | --- | ---
+`errorMsg` | `Timed out retrying` | The error message to write.
 `timeout` | `5000` | Time to wait for the `checkFunction` to return a truthy value before throwing an error.
 `interval` | `200` | Time to wait between the `checkFunction` invocations.
 
