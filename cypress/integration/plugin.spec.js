@@ -99,4 +99,18 @@ context('Actions', () => {
     cy.once('fail', err => expect(err.message).to.be.equal(ERROR_MESSAGE))
     cy.waitUntil(true)
   })
+
+  it('Should accept a custom error message', () => {
+    const COOKIE_NAME = 'unknwon-cookie'
+    const EXPECTED_COOKIE_VALUE = 'Set'
+
+    cy.once('fail', err => {
+      expect(err.message).to.be.equal('Custom error message')
+    })
+
+    const checkFunction = () => cy.getCookie(COOKIE_NAME)
+      .then(cookieValue => cookieValue && cookieValue.value === EXPECTED_COOKIE_VALUE)
+
+    cy.waitUntil(checkFunction, {errorMsg: 'Custom error message'})
+  })
 })
