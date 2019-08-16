@@ -25,6 +25,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "brogueady",
+      "name": "brogueady",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/10169795?v=4",
+      "profile": "https://github.com/brogueady",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
