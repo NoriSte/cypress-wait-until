@@ -1,7 +1,11 @@
-const {spawn} = require('child_process');
-const uploadRecordings = process.env.npm_package_config_cypressUploadRecordings;
-let command = "npm run cy:run";
-if(uploadRecordings) {
-    command += ` --record --key ${process.env.CYPRESS_RECORD_KEY}`
-}
-spawn(command);
+const npm = require('npm')
+
+npm.load(() => {
+  const uploadRecordings = process.env.npm_package_config_cypressUploadRecordings;
+  const key = process.env.CYPRESS_RECORD_KEY;
+  if(uploadRecordings && !key) {
+    throw 'Missing Cypress record key';
+  }
+  const options = uploadRecordings && key ? ['--record', '--key', key] : '';
+  npm.commands['run-script'](['cy:run', ...options]);
+})
