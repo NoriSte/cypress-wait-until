@@ -19,6 +19,7 @@ before_script:
   - "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash"
 script:
   - npm test
+  - cat /home/travis/.npm/_logs/*-debug.log
   - fossa init
   - fossa analyze
 after_success:
