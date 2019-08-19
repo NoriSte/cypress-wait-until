@@ -49,7 +49,7 @@ cy.waitUntil(() => true);
 
 // with all the available options
 cy.waitUntil(() => cy.window().then(win => win.foo === "bar"), {
-  errorMsg: 'This is a custom error message', // overrides the default error message 
+  errorMsg: 'This is a custom error message', // overrides the default error message
   timeout: 2000, // waits up to 2000 ms, default to 5000
   interval: 500 // performs the check every 500 ms, default to 200
 });
@@ -101,6 +101,10 @@ This plugin is dedicated to them ❤️
 
 This project has been made during one of the Open Source Saturdays, a series of Milan-based events
 where everyone codes just to spread some Open Source love ❤️
+
+## Contributing
+
+Contributes are welcome, if you need to run the tests through the dedicated `cy:run` script, you must update the packjage.json configuration setting `cypressUploadRecordings` to `false`.
 
 ## Contributors
 
