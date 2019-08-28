@@ -10,7 +10,7 @@
     "git-cz": "3.2.1",
     "serve": "11.1.0",
     "start-server-and-test": "1.10.0",
-    "typescript": "3.5.3"
+    "typescript": "3.6.2"
   },
   "types": "index.d.ts",
   "config": {
