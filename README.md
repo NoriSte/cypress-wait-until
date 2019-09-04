@@ -49,7 +49,7 @@ cy.waitUntil(() => true);
 
 // with all the available options
 cy.waitUntil(() => cy.window().then(win => win.foo === "bar"), {
-  errorMsg: 'This is a custom error message', // overrides the default error message 
+  errorMsg: 'This is a custom error message', // overrides the default error message
   timeout: 2000, // waits up to 2000 ms, default to 5000
   interval: 500 // performs the check every 500 ms, default to 200
 });
@@ -63,6 +63,57 @@ it too
 cy.waitUntil(() => cy.get("input[type=hidden]#recaptchatoken").then($el => $el.val()))
   // ... then, check that it's valid string asserting about it
   .then(token => expect(token).to.be.a("string").to.have.length.within(1, 1000));
+```
+
+The `waitUntil` command could be chained to other commands too. As an example, the following codes are equivalent
+```javascript
+cy.waitUntil(() => cy.getCookie('token').then(cookie => cookie.value === '<EXPECTED_VALUE>'));
+// is equivalent to
+cy.wrap('<EXPECTED_VALUE>')
+  .waitUntil((subject) => cy.getCookie('token').then(cookie => cookie.value === subject));
+```
+Please note: do not expect that the previous command are retried. Only what's inside the `checkFunction` code is retried
+```javascript
+cy.getCookie('token') // will not be retried
+  .waitUntil(cookie => cookie.value === '<EXPECTED_VALUE>');
+```
+
+
+### TypeScript
+
+If you use TypeScript you can add define the `checkFunction` returning type too. Here some examples with all the combinations of promises and chainable functions
+
+```typescript
+cy.waitUntil(() => true);
+cy.waitUntil<boolean>(() => true);
+cy.waitUntil<string>(() => true); // Error
+
+cy.waitUntil(() => Promise.resolve(true) );
+cy.waitUntil<boolean>(() => Promise.resolve(true) );
+cy.waitUntil<string>(() => Promise.resolve(true) );  // Error
+
+cy.waitUntil(() => cy.wrap(true) );
+cy.waitUntil<boolean>(() => cy.wrap(true) );
+cy.waitUntil<string>(() => cy.wrap(true) );  // Error
+
+cy.waitUntil(() => cy.wrap(true).then(result => result) );
+cy.waitUntil<boolean>(() => cy.wrap(true).then(result => result) );
+cy.waitUntil<string>(() => cy.wrap(true).then(result => result) );  // Error
+
+cy.waitUntil(() => cy.wrap(true).then(result => Promise.resolve(result)) );
+cy.waitUntil<boolean>(() => cy.wrap(true).then(result => Promise.resolve(result)) );
+cy.waitUntil<string>(() => cy.wrap(true).then(result => Promise.resolve(result)) );  // Error
+```
+
+Please note: do not forget to add `cypress-wait-until` to the `cypress/tsconfig.json` file
+
+```
+{
+  "compilerOptions": {
+    "types": ["cypress", "cypress-wait-until"]
+    }
+  }
+}
 ```
 
 
