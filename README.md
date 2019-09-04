@@ -65,6 +65,9 @@ cy.waitUntil(() => cy.get("input[type=hidden]#recaptchatoken").then($el => $el.v
   .then(token => expect(token).to.be.a("string").to.have.length.within(1, 1000));
 ```
 
+
+### TypeScript
+
 If you use TypeScript you can add define the `checkFunction` returning type too. Here some examples with all the combinations of promises and chainable functions
 
 ```typescript
@@ -87,6 +90,17 @@ cy.waitUntil<string>(() => cy.wrap(true).then(result => result) );  // Error
 cy.waitUntil(() => cy.wrap(true).then(result => Promise.resolve(result)) );
 cy.waitUntil<boolean>(() => cy.wrap(true).then(result => Promise.resolve(result)) );
 cy.waitUntil<string>(() => cy.wrap(true).then(result => Promise.resolve(result)) );  // Error
+```
+
+Please note: do not forget to add `cypress-wait-until` to the `cypress/tsconfig.json` file
+
+```
+{
+  "compilerOptions": {
+    "types": ["cypress", "cypress-wait-until"]
+    }
+  }
+}
 ```
 
 

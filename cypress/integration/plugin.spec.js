@@ -121,8 +121,34 @@ context('Actions', () => {
     const asyncCheckFunction = () => Promise.resolve(result);
     const chainableCheckFunction = () => cy.wrap(result).then(wrappedResult => wrappedResult);
 
-    cy.waitUntil(checkFunction).should("eq", result)
-    cy.waitUntil(asyncCheckFunction).should("eq", result)
-    cy.waitUntil(chainableCheckFunction).should("eq", result)
+    cy.waitUntil(checkFunction).should('eq', result)
+    cy.waitUntil(asyncCheckFunction).should('eq', result)
+    cy.waitUntil(chainableCheckFunction).should('eq', result)
+  })
+
+  it('Should wait between every check', () => {
+    const interval = 100;
+    let previousTimestamp;
+
+    const checkFunction = () => {
+      const previousTimestampBackup = previousTimestamp;
+      const newTimestamp = Date.now();
+      previousTimestamp = newTimestamp;
+      if(previousTimestampBackup) {
+        const diff = newTimestamp - previousTimestampBackup;
+        return diff >= interval;
+      }
+      return false
+    }
+
+    const asyncCheckFunction = () => Promise.resolve(checkFunction());
+    const chainableCheckFunction = () => cy.wrap().then(() => checkFunction());
+
+    cy.log("Sync function");
+    cy.waitUntil(checkFunction, {interval})
+    cy.log("Async function");
+    cy.waitUntil(asyncCheckFunction, {interval})
+    cy.log("Chainable function");
+    cy.waitUntil(chainableCheckFunction, {interval})
   })
 })

@@ -18,9 +18,10 @@ function waitUntil(checkFunction, options) {
     if (retries < 1) {
       throw new Error(ERROR_MSG)
     }
-    cy.wait(TIMEOUT_INTERVAL)
-    retries--
-    return resolveValue()
+    cy.wait(TIMEOUT_INTERVAL).then(() => {
+      retries--
+      return resolveValue()
+    })
   }
 
   const resolveValue = () => {
