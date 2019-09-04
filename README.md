@@ -65,6 +65,19 @@ cy.waitUntil(() => cy.get("input[type=hidden]#recaptchatoken").then($el => $el.v
   .then(token => expect(token).to.be.a("string").to.have.length.within(1, 1000));
 ```
 
+The `waitUntil` command could be chained to other commands too. As an example, the following codes are equivalent
+```javascript
+cy.waitUntil(() => cy.getCookie('token').then(cookie => cookie.value === '<EXPECTED_VALUE>'));
+// is equivalent to
+cy.wrap('<EXPECTED_VALUE>')
+  .waitUntil((subject) => cy.getCookie('token').then(cookie => cookie.value === subject));
+```
+Please note: do not expect that the previous command are retried. Only what's inside the `checkFunction` code is retried
+```javascript
+cy.getCookie('token') // will not be retried
+  .waitUntil(cookie => cookie.value === '<EXPECTED_VALUE>');
+```
+
 
 ### TypeScript
 

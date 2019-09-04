@@ -151,4 +151,17 @@ context('Actions', () => {
     cy.log("Chainable function");
     cy.waitUntil(chainableCheckFunction, {interval})
   })
+
+  it('Should be chainable', () => {
+    const result = 10;
+    const checkFunction = () => result;
+    const checkFunctionWithSubject = subject => subject;
+
+    cy.waitUntil(checkFunction)
+      .should('eq', result)
+
+    cy.wrap(result)
+      .waitUntil(checkFunctionWithSubject)
+      .should('eq', result)
+  })
 })

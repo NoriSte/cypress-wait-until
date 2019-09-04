@@ -1,6 +1,6 @@
 'use strict'
 
-function waitUntil(checkFunction, options) {
+function waitUntil(subject, checkFunction, options) {
   if (!(checkFunction instanceof Function)) {
     throw new Error('`checkFunction` parameter should be a function. Found: ' + checkFunction)
   }
@@ -25,7 +25,7 @@ function waitUntil(checkFunction, options) {
   }
 
   const resolveValue = () => {
-    const result = checkFunction()
+    const result = checkFunction(subject)
     const isAPromise = Boolean(result && result.then)
 
     if (isAPromise) {
@@ -38,4 +38,4 @@ function waitUntil(checkFunction, options) {
   return resolveValue()
 }
 
-Cypress.Commands.add("waitUntil", waitUntil);
+Cypress.Commands.add("waitUntil", {prevSubject:'optional'}, waitUntil);
