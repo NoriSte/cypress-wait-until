@@ -113,4 +113,16 @@ context('Actions', () => {
 
     cy.waitUntil(checkFunction, {errorMsg: 'Custom error message'})
   })
+
+  it('Should pass the result to the next command', () => {
+    const result = 10;
+
+    const checkFunction = () => result;
+    const asyncCheckFunction = () => Promise.resolve(result);
+    const chainableCheckFunction = () => cy.wrap(result).then(wrappedResult => wrappedResult);
+
+    cy.waitUntil(checkFunction).should("eq", result)
+    cy.waitUntil(asyncCheckFunction).should("eq", result)
+    cy.waitUntil(chainableCheckFunction).should("eq", result)
+  })
 })

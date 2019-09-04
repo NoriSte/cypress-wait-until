@@ -11,8 +11,10 @@ function waitUntil(checkFunction, options) {
   const ERROR_MSG = options.errorMsg || 'Timed out retrying'
   let retries = Math.floor(TIMEOUT / TIMEOUT_INTERVAL)
 
-  const check = b => {
-    if (b) return
+  const check = result => {
+    if (result) {
+      return result
+    }
     if (retries < 1) {
       throw new Error(ERROR_MSG)
     }
@@ -22,12 +24,13 @@ function waitUntil(checkFunction, options) {
   }
 
   const resolveValue = () => {
-    const r = checkFunction()
+    const result = checkFunction()
+    const isAPromise = Boolean(result && result.then)
 
-    if (r && r.then) {
-      return r.then(check)
+    if (isAPromise) {
+      return result.then(check)
     } else {
-      return check(r)
+      return check(result)
     }
   }
 

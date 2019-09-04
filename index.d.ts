@@ -1,10 +1,10 @@
 /// <reference types="Cypress" />
 
 declare namespace Cypress {
-  interface Chainable<Subject = any> {
-    waitUntil(
-      checkFunction: () => Chainable<boolean | Promise<boolean>>,
+  interface Chainable {
+    waitUntil<Subject = any>(
+      checkFunction: () => Subject | Chainable<Subject> | Promise<Subject>,
       options?: { timeout?: number; interval?: number; errorMsg?: string }
-    ): Chainable<undefined>;
+    ): Chainable<Subject>;
   }
 }
