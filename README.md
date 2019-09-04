@@ -68,9 +68,9 @@ cy.waitUntil(() => cy.get("input[type=hidden]#recaptchatoken").then($el => $el.v
 If you use TypeScript you can add define the `checkFunction` returning type too. Here some examples with all the combinations of promises and chainable functions
 
 ```typescript
-cy.waitUntil(() => true));
-cy.waitUntil<boolean>(() => true));
-cy.waitUntil<string>(() => true)); // Error
+cy.waitUntil(() => true);
+cy.waitUntil<boolean>(() => true);
+cy.waitUntil<string>(() => true); // Error
 
 cy.waitUntil(() => Promise.resolve(true) );
 cy.waitUntil<boolean>(() => Promise.resolve(true) );
