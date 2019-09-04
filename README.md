@@ -72,7 +72,7 @@ cy.waitUntil(() => cy.getCookie('token').then(cookie => cookie.value === '<EXPEC
 cy.wrap('<EXPECTED_VALUE>')
   .waitUntil((subject) => cy.getCookie('token').then(cookie => cookie.value === subject));
 ```
-Please note: do not expect that the previous command are retried. Only what's inside the `checkFunction` code is retried
+Please note: do not expect that the previous command is retried. Only what's inside the `checkFunction` code is retried
 ```javascript
 cy.getCookie('token') // will not be retried
   .waitUntil(cookie => cookie.value === '<EXPECTED_VALUE>');
@@ -81,7 +81,7 @@ cy.getCookie('token') // will not be retried
 
 ### TypeScript
 
-If you use TypeScript you can add define the `checkFunction` returning type too. Here some examples with all the combinations of promises and chainable functions
+If you use TypeScript you can define the `checkFunction` returning type too. Here some examples with all the combinations of promises and chainable functions
 
 ```typescript
 cy.waitUntil(() => true);

@@ -1,6 +1,6 @@
 {
   "name": "cypress-wait-until",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A waiting plugin for Cypress",
   "main": "src/index.js",
   "dependencies": {},
