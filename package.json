@@ -9,7 +9,7 @@
     "cz-conventional-changelog": "3.0.2",
     "git-cz": "3.2.1",
     "serve": "11.2.0",
-    "start-server-and-test": "1.10.3",
+    "start-server-and-test": "1.10.4",
     "typescript": "3.6.3"
   },
   "types": "index.d.ts",
