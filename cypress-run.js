@@ -6,6 +6,6 @@ npm.load(() => {
   if(uploadRecordings && !key) {
     throw 'Missing Cypress record key';
   }
-  const options = uploadRecordings && key ? ['--record', '--key', key] : '';
+  const options = uploadRecordings && key ? ['--record', '--key', key] : [];
   npm.commands['run-script'](['cy:run', ...options]);
 })
