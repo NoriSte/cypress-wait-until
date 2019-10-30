@@ -27,3 +27,5 @@ cy.waitUntil(() => true, {
     console.log({ name, message, consoleProps });
   }
 });
+
+cy.waitUntil(() => true, { log: false });

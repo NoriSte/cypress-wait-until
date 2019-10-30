@@ -134,6 +134,7 @@ Pass in an options object to change the default behavior of `cy.waitUntil()`.
 | `interval`    | `200`                | Time to wait between the `checkFunction` invocations.                                                                                                     |
 | `description` | `waitUntil`          | The name logged into the Cypress Test Runner.                                                                                                             |
 | `logger`      | `Cypress.log`        | A custom logger in place of the default [Cypress.log](https://docs.cypress.io/api/cypress-api/cypress-log.html). It's useful just for debugging purposes. |
+| `log`         | `true`               | Enable/disable logging.                                                                                                                                   |
 
 <br />
 <br />

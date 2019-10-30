@@ -8,6 +8,7 @@ interface WaitUntilOptions {
   errorMsg?: string;
   description?: string;
   logger?: (WaitUntilLog) => any;
+  log?: boolean;
 }
 
 declare namespace Cypress {

@@ -233,4 +233,17 @@ context("Cypress Wait Until", () => {
       expect(lastCallArgs).deep.include({ name: description });
     });
   });
+
+  it("Should allow to turn off logging", () => {
+    const checkFunction = () => true;
+
+    const logger = {
+      log: (...params) => Cypress.log(...params)
+    };
+    const spy = cy.spy(logger, "log");
+
+    cy.waitUntil(checkFunction, { logger: logger.log, log: false }).then(() => {
+      expect(spy).not.to.have.been.called;
+    });
+  });
 });

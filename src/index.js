@@ -12,17 +12,20 @@ function waitUntil(subject, checkFunction, options) {
   const TIMEOUT = options.timeout || 5000;
   const ERROR_MSG = options.errorMsg || "Timed out retrying";
   const LOG_DESCRIPTION = options.description || "waitUntil";
+  const LOG = options.log === false ? false : true;
   let retries = Math.floor(TIMEOUT / TIMEOUT_INTERVAL);
 
   const logger = options.logger || Cypress.log;
 
-  logger({
-    name: LOG_DESCRIPTION,
-    message: options,
-    consoleProps: () => ({
-      options
-    })
-  });
+  if (LOG) {
+    logger({
+      name: LOG_DESCRIPTION,
+      message: options,
+      consoleProps: () => ({
+        options
+      })
+    });
+  }
 
   const check = result => {
     if (result) {
