@@ -1,10 +1,20 @@
 /// <reference types="Cypress" />
 
+type WaitUntilLog = Pick<Cypress.LogConfig, "name" | "message" | "consoleProps">;
+
+interface WaitUntilOptions {
+  timeout?: number;
+  interval?: number;
+  errorMsg?: string;
+  description?: string;
+  logger?: (WaitUntilLog) => any;
+}
+
 declare namespace Cypress {
   interface Chainable<Subject = any> {
     waitUntil<Subject>(
       checkFunction: () => Subject | Chainable<Subject> | Promise<Subject>,
-      options?: { timeout?: number; interval?: number; errorMsg?: string }
+      options?: WaitUntilOptions
     ): Chainable<Subject>;
   }
 }
