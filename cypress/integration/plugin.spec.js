@@ -234,6 +234,23 @@ context("Cypress Wait Until", () => {
     });
   });
 
+  it("Should accept a custom message", () => {
+    const checkFunction = () => true;
+    const customMessage = "custom message";
+
+    const logger = {
+      log: (...params) => Cypress.log(...params)
+    };
+    const spy = cy.spy(logger, "log");
+    const options = { logger: logger.log, customMessage };
+
+    cy.waitUntil(checkFunction, options).then(() => {
+      expect(spy).to.have.been.called;
+      const lastCallArgs = spy.lastCall.args[0];
+      expect(lastCallArgs.message).deep.include(customMessage);
+    });
+  });
+
   it("Should allow to turn off logging", () => {
     const checkFunction = () => true;
 

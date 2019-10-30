@@ -29,3 +29,4 @@ cy.waitUntil(() => true, {
 });
 
 cy.waitUntil(() => true, { log: false });
+cy.waitUntil(() => true, { customMessage: "custom message" });

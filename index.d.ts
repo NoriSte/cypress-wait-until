@@ -7,6 +7,7 @@ interface WaitUntilOptions {
   interval?: number;
   errorMsg?: string;
   description?: string;
+  customMessage?: string;
   logger?: (WaitUntilLog) => any;
   log?: boolean;
 }

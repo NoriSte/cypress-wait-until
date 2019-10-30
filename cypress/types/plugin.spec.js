@@ -95,3 +95,11 @@ cy.waitUntil(
     log: false
   }
 );
+cy.waitUntil(
+  function() {
+    return true;
+  },
+  {
+    customMessage: "custom message"
+  }
+);
