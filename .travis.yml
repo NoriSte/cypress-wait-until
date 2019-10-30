@@ -23,3 +23,4 @@ script:
   - fossa analyze
 after_success:
   - cd <SOURCE_DIR> && fossa test
+  - npm run semantic-release

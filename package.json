@@ -1,6 +1,6 @@
 {
   "name": "cypress-wait-until",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A waiting plugin for Cypress",
   "main": "src/index.js",
   "dependencies": {},
@@ -10,7 +10,9 @@
     "git-cz": "3.3.0",
     "serve": "11.2.0",
     "start-server-and-test": "1.10.6",
-    "typescript": "3.6.4"
+    "typescript": "3.6.4",
+    "@semantic-release/npm": "5.3.2",
+    "semantic-release": "15.13.28"
   },
   "types": "index.d.ts",
   "config": {
@@ -25,7 +27,8 @@
     "test": "npm run cy:start-server-and-test",
     "cy:start-server-and-test": "start-server-and-test serve :5000 cy:run",
     "cy:run": "cypress run",
-    "typescript": "tsc --project ./tsconfig.json"
+    "typescript": "tsc --project ./tsconfig.json",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
