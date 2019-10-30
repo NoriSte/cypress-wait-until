@@ -154,6 +154,10 @@ This plugin is dedicated to them ❤️
 This project has been made during one of the Open Source Saturdays, a series of Milan-based events
 where everyone codes just to spread some Open Source love ❤️
 
+## Contributing
+
+Contributes are welcome, if you need to run the tests through `npm test`, you must update the packjage.json configuration setting `cypressUploadRecordings` to `false` (or set your own [Cypress recording key](https://docs.cypress.io/guides/guides/command-line.html#Options)).
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
