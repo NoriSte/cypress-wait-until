@@ -9,8 +9,7 @@ Add the Cypress waiting power to virtually everything 🎉
 [![NPM downloads](https://img.shields.io/npm/dw/cypress-wait-until?color=CB3836)](https://www.npmjs.com/package/cypress-wait-until)
 <br />
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNoriSte%2Fcypress-wait-until.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FNoriSte%2Fcypress-wait-until?ref=badge_shield)
-[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNoriSte%2Fcypress-wait-until.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FNoriSte%2Fcypress-wait-until?ref=badge_shield) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 [![Open Source
 Saturday](https://img.shields.io/badge/%E2%9D%A4%EF%B8%8F-open%20source%20saturday-F64060.svg)](https://www.meetup.com/it-IT/Open-Source-Saturday-Milano/)
@@ -65,6 +64,57 @@ cy.waitUntil(() => cy.get("input[type=hidden]#recaptchatoken").then($el => $el.v
   .then(token => expect(token).to.be.a("string").to.have.length.within(1, 1000));
 ```
 
+The `waitUntil` command could be chained to other commands too. As an example, the following codes are equivalent
+```javascript
+cy.waitUntil(() => cy.getCookie('token').then(cookie => cookie.value === '<EXPECTED_VALUE>'));
+// is equivalent to
+cy.wrap('<EXPECTED_VALUE>')
+  .waitUntil((subject) => cy.getCookie('token').then(cookie => cookie.value === subject));
+```
+Please note: do not expect that the previous command is retried. Only what's inside the `checkFunction` code is retried
+```javascript
+cy.getCookie('token') // will not be retried
+  .waitUntil(cookie => cookie.value === '<EXPECTED_VALUE>');
+```
+
+
+### TypeScript
+
+If you use TypeScript you can define the `checkFunction` returning type too. Here some examples with all the combinations of promises and chainable functions
+
+```typescript
+cy.waitUntil(() => true);
+cy.waitUntil<boolean>(() => true);
+cy.waitUntil<string>(() => true); // Error
+
+cy.waitUntil(() => Promise.resolve(true) );
+cy.waitUntil<boolean>(() => Promise.resolve(true) );
+cy.waitUntil<string>(() => Promise.resolve(true) );  // Error
+
+cy.waitUntil(() => cy.wrap(true) );
+cy.waitUntil<boolean>(() => cy.wrap(true) );
+cy.waitUntil<string>(() => cy.wrap(true) );  // Error
+
+cy.waitUntil(() => cy.wrap(true).then(result => result) );
+cy.waitUntil<boolean>(() => cy.wrap(true).then(result => result) );
+cy.waitUntil<string>(() => cy.wrap(true).then(result => result) );  // Error
+
+cy.waitUntil(() => cy.wrap(true).then(result => Promise.resolve(result)) );
+cy.waitUntil<boolean>(() => cy.wrap(true).then(result => Promise.resolve(result)) );
+cy.waitUntil<string>(() => cy.wrap(true).then(result => Promise.resolve(result)) );  // Error
+```
+
+Please note: do not forget to add `cypress-wait-until` to the `cypress/tsconfig.json` file
+
+```
+{
+  "compilerOptions": {
+    "types": ["cypress", "cypress-wait-until"]
+    }
+  }
+}
+```
+
 
 
 ## Arguments
@@ -77,11 +127,13 @@ A function that must return a truthy value when the wait is over.
 
 Pass in an options object to change the default behavior of `cy.waitUntil()`.
 
-Option | Default | Description
---- | --- | ---
-`errorMsg` | `Timed out retrying` | The error message to write.
-`timeout` | `5000` | Time to wait for the `checkFunction` to return a truthy value before throwing an error.
-`interval` | `200` | Time to wait between the `checkFunction` invocations.
+| Option        | Default              | Description                                                                                                                                               |
+| ------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `errorMsg`    | `Timed out retrying` | The error message to write.                                                                                                                               |
+| `timeout`     | `5000`               | Time to wait for the `checkFunction` to return a truthy value before throwing an error.                                                                   |
+| `interval`    | `200`                | Time to wait between the `checkFunction` invocations.                                                                                                     |
+| `description` | `waitUntil`          | The name logged into the Cypress Test Runner.                                                                                                             |
+| `logger`      | `Cypress.log`        | A custom logger in place of the default [Cypress.log](https://docs.cypress.io/api/cypress-api/cypress-log.html). It's useful just for debugging purposes. |
 
 <br />
 <br />
@@ -112,7 +164,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4" width="100px;" alt="Stefano Magni"/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Tests">⚠️</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Documentation">📖</a></td><td align="center"><a href="https://github.com/allevo"><img src="https://avatars1.githubusercontent.com/u/1054125?v=4" width="100px;" alt="Tommaso Allevi"/><br /><sub><b>Tommaso Allevi</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=allevo" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=allevo" title="Tests">⚠️</a></td></tr></table>
+<table>
+  <tr>
+    <td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4" width="100px;" alt="Stefano Magni"/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Tests">⚠️</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/allevo"><img src="https://avatars1.githubusercontent.com/u/1054125?v=4" width="100px;" alt="Tommaso Allevi"/><br /><sub><b>Tommaso Allevi</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=allevo" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=allevo" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/brogueady"><img src="https://avatars2.githubusercontent.com/u/10169795?v=4" width="100px;" alt="brogueady"/><br /><sub><b>brogueady</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=brogueady" title="Code">💻</a></td>
+  </tr>
+</table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 

@@ -1,37 +1,55 @@
-'use strict'
+"use strict";
 
-function waitUntil(checkFunction, options) {
+// log generico del comando <- da testaree √ e documentare X + nuova options logger X
+
+function waitUntil(subject, checkFunction, options) {
   if (!(checkFunction instanceof Function)) {
-    throw new Error('`checkFunction` parameter should be a function. Found: ' + checkFunction)
+    throw new Error("`checkFunction` parameter should be a function. Found: " + checkFunction);
   }
-  options = options || {}
+  options = options || {};
 
-  const TIMEOUT_INTERVAL = options.interval || 200
-  const TIMEOUT = options.timeout || 5000
-  const ERROR_MSG = options.errorMsg || 'Timed out retrying'
-  let retries = Math.floor(TIMEOUT / TIMEOUT_INTERVAL)
+  const TIMEOUT_INTERVAL = options.interval || 200;
+  const TIMEOUT = options.timeout || 5000;
+  const ERROR_MSG = options.errorMsg || "Timed out retrying";
+  const LOG_DESCRIPTION = options.description || "waitUntil";
+  let retries = Math.floor(TIMEOUT / TIMEOUT_INTERVAL);
 
-  const check = b => {
-    if (b) return
-    if (retries < 1) {
-      throw new Error(ERROR_MSG)
+  const logger = options.logger || Cypress.log;
+
+  logger({
+    name: LOG_DESCRIPTION,
+    message: options,
+    consoleProps: () => ({
+      options
+    })
+  });
+
+  const check = result => {
+    if (result) {
+      return result;
     }
-    cy.wait(TIMEOUT_INTERVAL)
-    retries--
-    return resolveValue()
-  }
+    if (retries < 1) {
+      throw new Error(ERROR_MSG);
+    }
+    cy.wait(TIMEOUT_INTERVAL, { log: false }).then(() => {
+      retries--;
+      return resolveValue();
+    });
+  };
 
   const resolveValue = () => {
-    const r = checkFunction()
+    const result = checkFunction(subject);
 
-    if (r && r.then) {
-      return r.then(check)
+    const isAPromise = Boolean(result && result.then);
+
+    if (isAPromise) {
+      return result.then(check);
     } else {
-      return check(r)
+      return check(result);
     }
-  }
+  };
 
-  return resolveValue()
+  return resolveValue();
 }
 
-Cypress.Commands.add("waitUntil", waitUntil);
+Cypress.Commands.add("waitUntil", { prevSubject: "optional" }, waitUntil);
