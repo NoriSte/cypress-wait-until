@@ -22,4 +22,5 @@ script:
   - fossa init
   - fossa analyze
 after_success:
+  - npm run semantic-release
   - cd <SOURCE_DIR> && fossa test
