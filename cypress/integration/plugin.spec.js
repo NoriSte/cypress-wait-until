@@ -32,11 +32,11 @@ context("Cypress Wait Until", () => {
         .getCookie(COOKIE_NAME)
         .then(cookieValue => cookieValue && cookieValue.value === EXPECTED_COOKIE_VALUE);
 
-    cy.waitUntil(checkFunction);
-
-    cy.getCookie(COOKIE_NAME).then(cookieValue =>
-      expect(cookieValue.value).to.be.equal(EXPECTED_COOKIE_VALUE)
-    );
+    cy.waitUntil(checkFunction).then(() => {
+      cy.getCookie(COOKIE_NAME).then(cookieValue =>
+        expect(cookieValue.value).to.be.equal(EXPECTED_COOKIE_VALUE)
+      );
+    });
   });
 
   it("Should apply options correctly", () => {
