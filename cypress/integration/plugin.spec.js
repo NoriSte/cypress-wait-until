@@ -32,11 +32,11 @@ context("Cypress Wait Until", () => {
         .getCookie(COOKIE_NAME)
         .then(cookieValue => cookieValue && cookieValue.value === EXPECTED_COOKIE_VALUE);
 
-    cy.waitUntil(checkFunction);
-
-    cy.getCookie(COOKIE_NAME).then(cookieValue =>
-      expect(cookieValue.value).to.be.equal(EXPECTED_COOKIE_VALUE)
-    );
+    cy.waitUntil(checkFunction).then(() => {
+      cy.getCookie(COOKIE_NAME).then(cookieValue =>
+        expect(cookieValue.value).to.be.equal(EXPECTED_COOKIE_VALUE)
+      );
+    });
   });
 
   it("Should apply options correctly", () => {
@@ -232,5 +232,109 @@ context("Cypress Wait Until", () => {
       const lastCallArgs = spy.lastCall.args[0];
       expect(lastCallArgs).deep.include({ name: description });
     });
+  });
+
+  it("Should accept a custom message", () => {
+    const checkFunction = () => true;
+    const customMessage = "custom message";
+
+    const logger = {
+      log: (...params) => Cypress.log(...params)
+    };
+    const spy = cy.spy(logger, "log");
+    const options = { logger: logger.log, customMessage };
+
+    cy.waitUntil(checkFunction, options).then(() => {
+      expect(spy).to.have.been.called;
+      const lastCallArgs = spy.lastCall.args[0];
+      expect(lastCallArgs.message).deep.include(customMessage);
+    });
+  });
+
+  it("Should allow to turn off logging", () => {
+    const checkFunction = () => true;
+
+    const logger = {
+      log: (...params) => Cypress.log(...params)
+    };
+    const spy = cy.spy(logger, "log");
+
+    cy.waitUntil(checkFunction, { logger: logger.log, log: false }).then(() => {
+      expect(spy).not.to.have.been.called;
+    });
+  });
+
+  it("Should log verbosely every single check", () => {
+    let checks = 0;
+    const checkFunction = () => {
+      checks++;
+      return checks > 1;
+    };
+
+    const logger = {
+      log: (...params) => Cypress.log(...params)
+    };
+    const spy = cy.spy(logger, "log");
+    const options = { logger: logger.log, verbose: true };
+
+    cy.waitUntil(checkFunction, options).then(() => {
+      const calls = spy.getCalls();
+      const expected = [
+        {
+          name: "waitUntil"
+        },
+        {
+          name: "waitUntil",
+          message: "false"
+        },
+        {
+          name: "waitUntil",
+          message: "true"
+        }
+      ];
+      expect(calls).to.have.lengthOf(expected.length);
+      for (let n = calls.length, i = 0; i < n; i++) {
+        expect(calls[i].args[0]).deep.include(expected[i]);
+      }
+    });
+  });
+
+  it("Should accept a `customCheckMessage` option", () => {
+    const checkFunction = () => true;
+
+    const logger = {
+      log: (...params) => Cypress.log(...params)
+    };
+    const spy = cy.spy(logger, "log");
+    const customCheckMessage = "custom message check";
+    const options = { logger: logger.log, verbose: true, customCheckMessage };
+
+    cy.waitUntil(checkFunction, options).then(() => {
+      expect(spy.getCalls()[1].args[0].message.toString()).to.include(customCheckMessage);
+    });
+  });
+
+  // test useful just to printout all the available options, screenshot them, and add them to the README
+  it("Options explanation", () => {
+    let checks = 0;
+    const checkFunction = () => {
+      checks++;
+      return checks > 2;
+    };
+    const checkFunction2 = () => {
+      checks++;
+      return checks > 5;
+    };
+
+    const options = {
+      // log options
+      description: "description",
+      customMessage: "customMessage",
+      verbose: true,
+      customCheckMessage: "customCheckMessage"
+    };
+
+    cy.waitUntil(checkFunction, { verbose: true });
+    cy.waitUntil(checkFunction2, options);
   });
 });
