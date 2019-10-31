@@ -139,6 +139,10 @@ Pass in an options object to change the default behavior of `cy.waitUntil()`.
 | `verbose`            | `false`                | If every single check result must be logged.                                                                                                              |
 | `customCheckMessage` | `undefined`            | Like `customMessage`, but used for every single check. Useless if `verbose` is not set to `true`.                                                         |
 
+Log options are a lot, take a look at the next screenshot to understand how they are printed
+
+![Plugin log options](assets/log-explained.jpg)
+
 <br />
 <br />
 

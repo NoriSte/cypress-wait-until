@@ -313,4 +313,28 @@ context("Cypress Wait Until", () => {
       expect(spy.getCalls()[1].args[0].message.toString()).to.include(customCheckMessage);
     });
   });
+
+  // test useful just to printout all the available options, screenshot them, and add them to the README
+  it("Options explanation", () => {
+    let checks = 0;
+    const checkFunction = () => {
+      checks++;
+      return checks > 2;
+    };
+    const checkFunction2 = () => {
+      checks++;
+      return checks > 5;
+    };
+
+    const options = {
+      // log options
+      description: "description",
+      customMessage: "customMessage",
+      verbose: true,
+      customCheckMessage: "customCheckMessage"
+    };
+
+    cy.waitUntil(checkFunction, { verbose: true });
+    cy.waitUntil(checkFunction2, options);
+  });
 });
