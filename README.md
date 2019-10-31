@@ -127,15 +127,17 @@ A function that must return a truthy value when the wait is over.
 
 Pass in an options object to change the default behavior of `cy.waitUntil()`.
 
-| Option          | Default              | Description                                                                                                                                               |
-| --------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `errorMsg`      | `Timed out retrying` | The error message to write.                                                                                                                               |
-| `timeout`       | `5000`               | Time to wait for the `checkFunction` to return a truthy value before throwing an error.                                                                   |
-| `interval`      | `200`                | Time to wait between the `checkFunction` invocations.                                                                                                     |
-| `description`   | `waitUntil`          | The name logged into the Cypress Test Runner.                                                                                                             |
-| `logger`        | `Cypress.log`        | A custom logger in place of the default [Cypress.log](https://docs.cypress.io/api/cypress-api/cypress-log.html). It's useful just for debugging purposes. |
-| `log`           | `true`               | Enable/disable logging.                                                                                                                                   |
-| `customMessage` | `undefined`          | String logged after the `options.description`.                                                                                                            |
+| Option               | Default                | Description                                                                                                                                               |
+| -------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `errorMsg`           | `"Timed out retrying"` | The error message to write.                                                                                                                               |
+| `timeout`            | `5000`                 | Time to wait for the `checkFunction` to return a truthy value before throwing an error.                                                                   |
+| `interval`           | `200`                  | Time to wait between the `checkFunction` invocations.                                                                                                     |
+| `description`        | `"waitUntil"`          | The name logged into the Cypress Test Runner.                                                                                                             |
+| `logger`             | `Cypress.log`          | A custom logger in place of the default [Cypress.log](https://docs.cypress.io/api/cypress-api/cypress-log.html). It's useful just for debugging purposes. |
+| `log`                | `true`                 | Enable/disable logging.                                                                                                                                   |
+| `customMessage`      | `undefined`            | String logged after the `options.description`.                                                                                                            |
+| `verbose`            | `false`                | If every single check result must be logged.                                                                                                              |
+| `customCheckMessage` | `undefined`            | Like `customMessage`, but used for every single check. Useless if `verbose` is not set to `true`.                                                         |
 
 <br />
 <br />

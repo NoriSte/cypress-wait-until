@@ -8,6 +8,8 @@ interface WaitUntilOptions {
   errorMsg?: string;
   description?: string;
   customMessage?: string;
+  verbose?: boolean;
+  customCheckMessage?: string;
   logger?: (WaitUntilLog) => any;
   log?: boolean;
 }

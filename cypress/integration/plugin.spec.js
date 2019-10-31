@@ -263,4 +263,54 @@ context("Cypress Wait Until", () => {
       expect(spy).not.to.have.been.called;
     });
   });
+
+  it("Should log verbosely every single check", () => {
+    let checks = 0;
+    const checkFunction = () => {
+      checks++;
+      return checks > 1;
+    };
+
+    const logger = {
+      log: (...params) => Cypress.log(...params)
+    };
+    const spy = cy.spy(logger, "log");
+    const options = { logger: logger.log, verbose: true };
+
+    cy.waitUntil(checkFunction, options).then(() => {
+      const calls = spy.getCalls();
+      const expected = [
+        {
+          name: "waitUntil"
+        },
+        {
+          name: "waitUntil",
+          message: "false"
+        },
+        {
+          name: "waitUntil",
+          message: "true"
+        }
+      ];
+      expect(calls).to.have.lengthOf(expected.length);
+      for (let n = calls.length, i = 0; i < n; i++) {
+        expect(calls[i].args[0]).deep.include(expected[i]);
+      }
+    });
+  });
+
+  it("Should accept a `customCheckMessage` option", () => {
+    const checkFunction = () => true;
+
+    const logger = {
+      log: (...params) => Cypress.log(...params)
+    };
+    const spy = cy.spy(logger, "log");
+    const customCheckMessage = "custom message check";
+    const options = { logger: logger.log, verbose: true, customCheckMessage };
+
+    cy.waitUntil(checkFunction, options).then(() => {
+      expect(spy.getCalls()[1].args[0].message.toString()).to.include(customCheckMessage);
+    });
+  });
 });

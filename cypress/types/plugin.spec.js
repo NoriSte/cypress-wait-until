@@ -71,35 +71,21 @@ cy.waitUntil(
   },
   { errorMsg: "Custom error message" }
 );
-cy.waitUntil(
-  function() {
-    return true;
-  },
-  { description: "Custom description" }
-);
-cy.waitUntil(
-  function() {
-    return true;
-  },
-  {
-    logger: ({ name, message, consoleProps }) => {
-      console.log({ name, message, consoleProps });
-    }
+cy.waitUntil(() => true, { description: "Custom description" });
+cy.waitUntil(() => true, {
+  logger: ({ name, message, consoleProps }) => {
+    console.log({ name, message, consoleProps });
   }
-);
-cy.waitUntil(
-  function() {
-    return true;
-  },
-  {
-    log: false
-  }
-);
-cy.waitUntil(
-  function() {
-    return true;
-  },
-  {
-    customMessage: "custom message"
-  }
-);
+});
+cy.waitUntil(() => true, {
+  log: false
+});
+cy.waitUntil(() => true, {
+  customMessage: "custom message"
+});
+cy.waitUntil(() => true, {
+  verbose: true
+});
+cy.waitUntil(() => true, {
+  customCheckMessage: "custom check message"
+});
