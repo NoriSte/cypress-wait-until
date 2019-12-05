@@ -10,7 +10,7 @@ interface WaitUntilOptions {
   customMessage?: string;
   verbose?: boolean;
   customCheckMessage?: string;
-  logger?: (WaitUntilLog) => any;
+  logger?: (arg0: WaitUntilLog) => any;
   log?: boolean;
 }
 
