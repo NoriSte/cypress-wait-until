@@ -171,16 +171,20 @@ Contributes are welcome, if you need to run the tests through `npm test`, you mu
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4" width="100px;" alt="Stefano Magni"/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Tests">⚠️</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/allevo"><img src="https://avatars1.githubusercontent.com/u/1054125?v=4" width="100px;" alt="Tommaso Allevi"/><br /><sub><b>Tommaso Allevi</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=allevo" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=allevo" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/brogueady"><img src="https://avatars2.githubusercontent.com/u/10169795?v=4" width="100px;" alt="brogueady"/><br /><sub><b>brogueady</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=brogueady" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/seeu1"><img src="https://avatars3.githubusercontent.com/u/57105774?v=4" width="100px;" alt="seeu1"/><br /><sub><b>seeu1</b></sub></a><br /><a href="#ideas-seeu1" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4" width="100px;" alt=""/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Tests">⚠️</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=NoriSte" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/allevo"><img src="https://avatars1.githubusercontent.com/u/1054125?v=4" width="100px;" alt=""/><br /><sub><b>Tommaso Allevi</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=allevo" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=allevo" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/brogueady"><img src="https://avatars2.githubusercontent.com/u/10169795?v=4" width="100px;" alt=""/><br /><sub><b>brogueady</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=brogueady" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/seeu1"><img src="https://avatars3.githubusercontent.com/u/57105774?v=4" width="100px;" alt=""/><br /><sub><b>seeu1</b></sub></a><br /><a href="#ideas-seeu1" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/sweir27"><img src="https://avatars3.githubusercontent.com/u/2081340?v=4" width="100px;" alt=""/><br /><sub><b>Sarah Weir</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/issues?q=author%3Asweir27" title="Bug reports">🐛</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=sweir27" title="Code">💻</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
