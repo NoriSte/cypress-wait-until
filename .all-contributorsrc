@@ -43,11 +43,22 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "sweir27",
+      "name": "Sarah Weir",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2081340?v=4",
+      "profile": "https://github.com/sweir27",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "cypress-wait-until",
   "projectOwner": "NoriSte",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
