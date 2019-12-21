@@ -12,7 +12,7 @@
     "start-server-and-test": "1.10.6",
     "typescript": "3.7.4",
     "@semantic-release/npm": "5.3.4",
-    "semantic-release": "15.13.31"
+    "semantic-release": "15.14.0"
   },
   "types": "index.d.ts",
   "config": {
