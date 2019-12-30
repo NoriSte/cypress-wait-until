@@ -8,7 +8,7 @@
     "cypress": "3.8.1",
     "cz-conventional-changelog": "3.0.2",
     "git-cz": "3.3.0",
-    "serve": "11.2.0",
+    "serve": "11.3.0",
     "start-server-and-test": "1.10.6",
     "typescript": "3.7.4",
     "@semantic-release/npm": "5.3.5",
