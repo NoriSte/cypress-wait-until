@@ -9,7 +9,7 @@
     "cz-conventional-changelog": "3.0.2",
     "git-cz": "4.2.0",
     "serve": "11.3.0",
-    "start-server-and-test": "1.10.6",
+    "start-server-and-test": "1.10.7",
     "typescript": "3.7.5",
     "@semantic-release/npm": "6.0.0",
     "semantic-release": "16.0.2"
