@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "dependencies": {},
   "devDependencies": {
-    "cypress": "3.8.2",
+    "cypress": "3.8.3",
     "cz-conventional-changelog": "3.0.2",
     "git-cz": "4.2.0",
     "serve": "11.3.0",
