@@ -11,7 +11,7 @@
     "serve": "11.3.0",
     "start-server-and-test": "1.10.8",
     "typescript": "3.7.5",
-    "@semantic-release/npm": "6.0.0",
+    "@semantic-release/npm": "7.0.0",
     "semantic-release": "17.0.0"
   },
   "types": "index.d.ts",
