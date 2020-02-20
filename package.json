@@ -25,7 +25,7 @@
     "commit": "git-cz",
     "serve": "serve public",
     "cy:open": "cypress open",
-    "test": "npm run cy:start-server-and-test",
+    "test": "npm run typescript && npm run cy:start-server-and-test",
     "cy:start-server-and-test": "start-server-and-test serve :5000 cy:run-uploading-videos",
     "cy:run-uploading-videos": "node cypress-run.js",
     "cy:run": "cypress run",
