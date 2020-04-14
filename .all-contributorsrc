@@ -53,6 +53,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "john20xdoe",
+      "name": "Lee Alexis",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/14521605?v=4",
+      "profile": "https://github.com/john20xdoe",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
