@@ -104,7 +104,8 @@ cy.waitUntil<boolean>(() => cy.wrap(true).then(result => Promise.resolve(result)
 cy.waitUntil<string>(() => cy.wrap(true).then(result => Promise.resolve(result)) );  // Error
 ```
 
-Please note: do not forget to add `cypress-wait-until` to the `cypress/tsconfig.json` file
+#### IMPORTANT:
+1. Remember to add `cypress-wait-until` to the `cypress/tsconfig.json` file
 
 ```
 {
@@ -113,6 +114,15 @@ Please note: do not forget to add `cypress-wait-until` to the `cypress/tsconfig.
     }
   }
 }
+```
+
+2. If you are encountering "cy.waitUntil is not a function" or "cy.waitUntil is undefined", you might need to specify the support file in your `cypress.json` for the import to work correctly:
+
+```
+{
+  "supportFile": "cypress/support/commands.ts"
+}
+
 ```
 
 
