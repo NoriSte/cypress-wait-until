@@ -191,6 +191,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/seeu1"><img src="https://avatars3.githubusercontent.com/u/57105774?v=4" width="100px;" alt=""/><br /><sub><b>seeu1</b></sub></a><br /><a href="#ideas-seeu1" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/sweir27"><img src="https://avatars3.githubusercontent.com/u/2081340?v=4" width="100px;" alt=""/><br /><sub><b>Sarah Weir</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/issues?q=author%3Asweir27" title="Bug reports">🐛</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=sweir27" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/john20xdoe"><img src="https://avatars3.githubusercontent.com/u/14521605?v=4" width="100px;" alt=""/><br /><sub><b>Lee Alexis</b></sub></a><br /><a href="https://github.com/NoriSte/cypress-wait-until/commits?author=john20xdoe" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/peburrows"><img src="https://avatars3.githubusercontent.com/u/778?v=4" width="100px;" alt=""/><br /><sub><b>Phil Burrows</b></sub></a><br /><a href="#ideas-peburrows" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=peburrows" title="Code">💻</a> <a href="https://github.com/NoriSte/cypress-wait-until/commits?author=peburrows" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

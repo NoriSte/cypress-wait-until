@@ -62,6 +62,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "peburrows",
+      "name": "Phil Burrows",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/778?v=4",
+      "profile": "https://github.com/peburrows",
+      "contributions": [
+        "ideas",
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
