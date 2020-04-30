@@ -1,11 +1,16 @@
 /// <reference types="Cypress" />
 
-type WaitUntilLog = Pick<Cypress.LogConfig, "name" | "message" | "consoleProps">;
+type WaitUntilLog = Pick<
+  Cypress.LogConfig,
+  "name" | "message" | "consoleProps"
+>;
+
+type ErrorMsgCallback = (result: any, options: any) => string;
 
 interface WaitUntilOptions {
   timeout?: number;
   interval?: number;
-  errorMsg?: string;
+  errorMsg?: string | ErrorMsgCallback;
   description?: string;
   customMessage?: string;
   verbose?: boolean;

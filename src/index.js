@@ -5,7 +5,7 @@ const logCommand = ({ options, originalOptions }) => {
     options.logger({
       name: options.description,
       message: options.customMessage,
-      consoleProps: () => originalOptions
+      consoleProps: () => originalOptions,
     });
   }
 };
@@ -19,13 +19,15 @@ const logCommandCheck = ({ result, options, originalOptions }) => {
   options.logger({
     name: options.description,
     message,
-    consoleProps: () => originalOptions
+    consoleProps: () => originalOptions,
   });
 };
 
 const waitUntil = (subject, checkFunction, originalOptions = {}) => {
   if (!(checkFunction instanceof Function)) {
-    throw new Error("`checkFunction` parameter should be a function. Found: " + checkFunction);
+    throw new Error(
+      "`checkFunction` parameter should be a function. Found: " + checkFunction
+    );
   }
 
   const defaultOptions = {
@@ -40,24 +42,29 @@ const waitUntil = (subject, checkFunction, originalOptions = {}) => {
     customMessage: undefined,
     logger: Cypress.log,
     verbose: false,
-    customCheckMessage: undefined
+    customCheckMessage: undefined,
   };
   const options = { ...defaultOptions, ...originalOptions };
 
   // filter out a falsy passed "customMessage" value
-  options.customMessage = [options.customMessage, originalOptions].filter(Boolean);
+  options.customMessage = [options.customMessage, originalOptions].filter(
+    Boolean
+  );
 
   let retries = Math.floor(options.timeout / options.interval);
 
   logCommand({ options, originalOptions });
 
-  const check = result => {
+  const check = (result) => {
     logCommandCheck({ result, options, originalOptions });
     if (result) {
       return result;
     }
     if (retries < 1) {
-      const msg = options.errorMsg.call ? options.errorMsg() : options.errorMsg;
+      const msg =
+        options.errorMsg instanceof Function
+          ? options.errorMsg(result, options)
+          : options.errorMsg;
       throw new Error(msg);
     }
     cy.wait(options.interval, { log: false }).then(() => {
