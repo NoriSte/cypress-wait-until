@@ -153,6 +153,26 @@ context("Cypress Wait Until", () => {
     cy.waitUntil(checkFunction, { errorMsg: "Custom error message" });
   });
 
+  it("Should accept a custom error message that is a function", () => {
+    const COOKIE_NAME = "unknwon-cookie";
+    const EXPECTED_COOKIE_VALUE = "Set";
+    let dynamicValue = "before";
+
+    cy.once("fail", (err) => {
+      expect(err.message).to.be.equal("Custom error message - after");
+    });
+
+    const checkFunction = () =>
+      cy.getCookie(COOKIE_NAME).then((cookieValue) => {
+        dynamicValue = "after";
+        return cookieValue && cookieValue.value === EXPECTED_COOKIE_VALUE;
+      });
+
+    cy.waitUntil(checkFunction, {
+      errorMsg: () => `Custom error message - ${dynamicValue}`,
+    });
+  });
+
   it("Should pass the result to the next command", () => {
     const result = 10;
 
