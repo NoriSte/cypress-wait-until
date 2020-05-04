@@ -16,6 +16,21 @@ cy.waitUntil(() => true, { errorMsg: () => 'Custom error message' })
 cy.waitUntil(() => Promise.resolve(true), {
   errorMsg: () => 'Custom error message',
 })
+cy.waitUntil(() => Promise.resolve(true), {
+  errorMsg: () => 'Custom error message',
+})
+cy.waitUntil(() => true, {
+  errorMsg: (
+    _result: any,
+    {
+      timeout,
+      interval,
+    }: {
+      timeout: number
+      interval: number
+    }
+  ) => 'Custom error message',
+})
 
 cy.waitUntil(() => true, { description: 'Custom description' })
 
@@ -41,6 +56,18 @@ cy.waitUntil<boolean>(() => Promise.resolve(true), { errorMsg: 'Custom error mes
 cy.waitUntil<boolean>(() => true, { errorMsg: () => 'Custom error message' })
 cy.waitUntil<boolean>(() => Promise.resolve(true), {
   errorMsg: () => 'Custom error message',
+})
+cy.waitUntil<boolean>(() => true, {
+  errorMsg: (
+    _result: boolean,
+    {
+      timeout,
+      interval,
+    }: {
+      timeout: number
+      interval: number
+    }
+  ) => 'Custom error message',
 })
 cy.waitUntil<boolean>(() => true, { description: 'Custom description' })
 cy.waitUntil<boolean>(() => true, {
