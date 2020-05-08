@@ -134,6 +134,14 @@ Log options are a lot, take a look at the next screenshot to understand how they
 <br />
 <br />
 
+## Could cy.waitUntil avoid failing the test?
+
+No. `cy.waitUntil` waits for something that must happen, otherwise the test will fail. [Cypress enforces to avoid conditional testing](https://docs.cypress.io/guides/core-concepts/conditional-testing.html) and the plugin agrees with that.
+
+There are cases where conditional testing makes sense but if `cy.waitUntil` would have this capability everyone will use it to create conditional tests, treating the Cypress feature—because avoiding conditional testing is a feature—as "a bug".
+
+If you need conditional testing you could write your own recursive promise check function (take a look [here](https://stackoverflow.com/questions/54883861/how-can-i-wait-for-each-element-in-a-list-to-update-to-a-certain-text-using-cypr/55363629#55363629) and [here](https://stackoverflow.com/questions/54732818/how-do-i-wait-until-a-cookie-is-set/54743229#54743229) where it is explained how to do that) where you manage your case. After all, `cy.waitUntil` is just a recursive promise manager 😊
+
 ## Why did we write it?
 
 A lot of StackOverflow users had some difficulties in implementing a recursive promise with Cypress
