@@ -24,4 +24,3 @@ script:
 after_success:
   - npm run semantic-release
   - cd <SOURCE_DIR> && fossa test
-  - npm run semantic-release
