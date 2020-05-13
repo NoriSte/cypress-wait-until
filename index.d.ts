@@ -21,8 +21,10 @@ interface WaitUntilOptions<Subject = any> {
 
 declare namespace Cypress {
   interface Chainable<Subject = any> {
-    waitUntil<Subject>(
-      checkFunction: () => Subject | Chainable<Subject> | Promise<Subject>,
+    waitUntil<ReturnType = any>(
+      checkFunction: (
+        subject: Subject | undefined
+      ) => ReturnType | Chainable<ReturnType> | Promise<ReturnType>,
       options?: WaitUntilOptions<Subject>
     ): Chainable<Subject>
   }
