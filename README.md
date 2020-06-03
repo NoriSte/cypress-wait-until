@@ -160,7 +160,7 @@ where everyone codes just to spread some Open Source love ❤️
 
 ## Contributing
 
-Contributes are welcome, if you need to run the tests through `npm test`, you must update the packjage.json configuration setting `cypressUploadRecordings` to `false` (or set your own [Cypress recording key](https://docs.cypress.io/guides/guides/command-line.html#Options)).
+Contributes are welcome, if you need to run the tests through `npm test`, you must update the package.json configuration setting `cypressUploadRecordings` to `false` (or set your own [Cypress recording key](https://docs.cypress.io/guides/guides/command-line.html#Options)).
 
 ## Contributors
 
