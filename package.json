@@ -10,7 +10,7 @@
     "git-cz": "4.7.0",
     "serve": "11.3.2",
     "start-server-and-test": "1.11.0",
-    "typescript": "3.9.5",
+    "typescript": "3.9.6",
     "@semantic-release/npm": "7.0.5",
     "semantic-release": "17.1.1"
   },
