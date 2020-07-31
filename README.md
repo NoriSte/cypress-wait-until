@@ -71,11 +71,15 @@ cy.waitUntil(() => cy.getCookie('token').then(cookie => cookie.value === '<EXPEC
 cy.wrap('<EXPECTED_VALUE>')
   .waitUntil((subject) => cy.getCookie('token').then(cookie => cookie.value === subject));
 ```
-Please note: do not expect that the previous command is retried. Only what's inside the `checkFunction` code is retried
+**Please note**
+- do not expect that the previous command is retried. Only what's inside the `checkFunction` body is retried
 ```javascript
 cy.getCookie('token') // will not be retried
   .waitUntil(cookie => cookie.value === '<EXPECTED_VALUE>');
 ```
+- you cannot put assertions inside `checkFunction`. There is no way to avoid a test failure [if an assertion throws an error](https://stackoverflow.com/questions/56743695/error-handling-using-the-catch-block-in-cypress). You must manually check what the assertions would check for you. The most common case is checking that an element exists or not, instead of using `cy.get('#id').should('exist')` you should check that `Cypress.$('#id').length` is greater than `0`. [Here](https://github.com/NoriSte/cypress-wait-until/issues/75#issuecomment-572685623) you can find a deeper explanation
+
+
 
 
 ### TypeScript
