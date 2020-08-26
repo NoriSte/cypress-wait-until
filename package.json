@@ -7,7 +7,7 @@
   "devDependencies": {
     "cypress": "5.0.0",
     "cz-conventional-changelog": "3.2.1",
-    "git-cz": "4.7.0",
+    "git-cz": "4.7.1",
     "serve": "11.3.2",
     "start-server-and-test": "1.11.3",
     "typescript": "4.0.2",
