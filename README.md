@@ -79,6 +79,8 @@ cy.getCookie('token') // will not be retried
 ```
 - you cannot put assertions inside `checkFunction`. There is no way to avoid a test failure [if an assertion throws an error](https://stackoverflow.com/questions/56743695/error-handling-using-the-catch-block-in-cypress). You must manually check what the assertions would check for you. The most common case is checking that an element exists or not, instead of using `cy.get('#id').should('exist')` you should check that `Cypress.$('#id').length` is greater than `0`. [Here](https://github.com/NoriSte/cypress-wait-until/issues/75#issuecomment-572685623) you can find a deeper explanation
 
+- nested `cy.waitUntil` calls don't respect `timeout` options. `timeout` and `interval` are converted to a number of retries. If the parent `cy.waitUntil` retries 10 times and the nested one 15 times, then the latter will be run 150 times before giving up, resulting in an extremely long wait. See [the discussion](https://github.com/NoriSte/cypress-wait-until/issues/241) for more info
+
 
 
 
