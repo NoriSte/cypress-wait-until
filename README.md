@@ -30,7 +30,7 @@ yarn add -D cypress-wait-until
 
 Add this line to your project's `cypress/support/commands.js`:
 
-```
+```javascript
 import 'cypress-wait-until';
 ```
 
@@ -91,7 +91,7 @@ If you use TypeScript you can define the `checkFunction` returning type too. Tak
 #### IMPORTANT:
 1. Remember to add `cypress-wait-until` to the `cypress/tsconfig.json` file
 
-```
+```javascript
 {
   "compilerOptions": {
     "types": ["cypress", "cypress-wait-until"]
@@ -102,7 +102,7 @@ If you use TypeScript you can define the `checkFunction` returning type too. Tak
 
 2. If you are encountering "cy.waitUntil is not a function" or "cy.waitUntil is undefined", you might need to specify the support file in your `cypress.json` for the import to work correctly:
 
-```
+```javascript
 {
   "supportFile": "cypress/support/commands.ts"
 }
