@@ -95,7 +95,6 @@ If you use TypeScript you can define the `checkFunction` returning type too. Tak
 {
   "compilerOptions": {
     "types": ["cypress", "cypress-wait-until"]
-    }
   }
 }
 ```
