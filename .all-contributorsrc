@@ -82,6 +82,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Zertz",
+      "name": "Pier-Luc Gendreau",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2636763?v=4",
+      "profile": "https://pierluc.io/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
