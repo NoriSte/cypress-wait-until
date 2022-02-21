@@ -2,7 +2,7 @@
 
 context('Cypress Wait Until', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5000/')
+    cy.visit('http://localhost:3000/')
   })
 
   it('Should work with an immediately-satisfied condition', () => {
@@ -387,4 +387,17 @@ context('Cypress Wait Until', () => {
     cy.waitUntil(checkFunction, { verbose: true })
     cy.waitUntil(checkFunction2, options)
   })
+
+  it.only("Should reload page until element is found", () => {
+    cy.waitUntil(
+      () => {
+        cy.reload().then(() => Cypress.$("#immediate-cookie").length);
+      },
+      {
+        interval: 2000,
+        timeout: 10000,
+        errorMsg: "Element not found",
+      }
+    );
+  });
 })
