@@ -3,6 +3,10 @@
   "version": "1.7.2",
   "description": "A waiting plugin for Cypress",
   "main": "src/index.js",
+  "engines": {
+    "node": ">=18.16.0",
+    "npm": ">=9.5.1"
+  },
   "dependencies": {},
   "devDependencies": {
     "cypress": "12.13.0",
