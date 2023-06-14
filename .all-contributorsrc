@@ -91,6 +91,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "liambutler",
+      "name": "Liam Butler",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24389501?v=4",
+      "profile": "https://github.com/liambutler",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -98,5 +108,7 @@
   "projectOwner": "NoriSte",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs",
+  "commitConvention": "angular"
 }
