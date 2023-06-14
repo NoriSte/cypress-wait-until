@@ -47,7 +47,7 @@ const waitUntil = (subject, checkFunction, originalOptions = {}) => {
   // filter out a falsy passed "customMessage" value
   options.customMessage = [options.customMessage, originalOptions].filter(Boolean)
 
-  let retries = Math.floor(options.timeout / options.interval)
+  const endTime = Date.now() + options.timeout
 
   logCommand({ options, originalOptions })
 
@@ -56,13 +56,12 @@ const waitUntil = (subject, checkFunction, originalOptions = {}) => {
     if (result) {
       return result
     }
-    if (retries < 1) {
+    if (Date.now() >= endTime) {
       const msg =
         options.errorMsg instanceof Function ? options.errorMsg(result, options) : options.errorMsg
       throw new Error(msg)
     }
     cy.wait(options.interval, { log: false }).then(() => {
-      retries--
       return resolveValue()
     })
   }

@@ -39,6 +39,38 @@ context('Cypress Wait Until', () => {
     })
   })
 
+  it('Should run once if waitUntil timeout is less than checkFunction execution time', () => {
+    let checks = 0
+    const checkFunction = () => {
+      cy.wait(500).then(() => {
+        checks++
+        return false
+      })
+    }
+
+    cy.once('fail', () => {
+      expect(checks).to.equal(1)
+    })
+
+    cy.waitUntil(checkFunction, { timeout: 400 })
+  })
+
+  it('Should run 3 times if checkFunction + interval is 2s and timeout is 5s', () => {
+    let checks = 0
+    const checkFunction = () => {
+      cy.wait(1500).then(() => {
+        checks++
+        return false
+      })
+    }
+
+    cy.once('fail', () => {
+      expect(checks).to.equal(3)
+    })
+
+    cy.waitUntil(checkFunction, { timeout: 5000, interval: 500 })
+  })
+
   it('Should apply options correctly', () => {
     const COOKIE_NAME = 'after-a-while-cookie'
     const EXPECTED_COOKIE_VALUE = 'Set'
