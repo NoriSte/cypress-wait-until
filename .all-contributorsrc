@@ -101,6 +101,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "knorrium",
+      "name": "Felipe Knorr Kuhn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100320?v=4",
+      "profile": "http://knorrium.info",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
