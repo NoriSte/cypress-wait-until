@@ -1,9 +1,9 @@
 {
   "name": "cypress-wait-until",
-  "version": "2.0.1",
-  "engines" : {
-    "npm" : ">=9.6.4",
-    "node" : ">=20.1.0"
+  "version": "3.0.0",
+  "engines": {
+    "npm": ">=9.6.4",
+    "node": ">=20.1.0"
   },
   "description": "A waiting plugin for Cypress",
   "main": "src/index.js",
