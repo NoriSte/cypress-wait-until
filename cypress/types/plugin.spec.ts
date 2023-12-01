@@ -82,3 +82,7 @@ cy.wrap('').waitUntil((subject) => subject.length)
 cy.wrap('').waitUntil<boolean>((subject) => !!subject.length)
 cy.wrap<string>('').waitUntil<boolean>((subject) => !!subject.length)
 cy.wrap<string>('').waitUntil((subject) => subject.length)
+
+cy.waitUntil(() => cy.task<number>('myTaskReturningANumber')).then((subject) => {
+  subject * subject
+})
