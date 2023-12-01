@@ -26,6 +26,6 @@ declare namespace Cypress {
         subject: Subject | undefined
       ) => ReturnType | Chainable<ReturnType> | Promise<ReturnType>,
       options?: WaitUntilOptions<Subject>
-    ): Chainable<Subject>
+    ): Chainable<ReturnType>
   }
 }
