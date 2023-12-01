@@ -119,6 +119,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "mistic100",
+      "name": "Damien Sorel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41597?v=4",
+      "profile": "https://www.strangeplanet.fr",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
