@@ -1,4 +1,4 @@
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
 
 type WaitUntilLog = Pick<Cypress.LogConfig, 'name' | 'message' | 'consoleProps'>
 

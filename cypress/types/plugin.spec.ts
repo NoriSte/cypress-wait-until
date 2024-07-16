@@ -1,4 +1,4 @@
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
 
 cy.waitUntil(() => true)
 cy.waitUntil(() => Promise.resolve(true))
